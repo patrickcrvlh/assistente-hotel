@@ -30,8 +30,8 @@ def perguntar_ao_joao():
     )
 
    # 4. Esperar a resposta ficar pronta com timeout de segurança
-        tempo_maximo = 60  # segundos
-        tempo_inicial = time.time()
+   tempo_maximo = 60  # segundos
+   tempo_inicial = time.time()
 
     while True:
         run_status = openai.beta.threads.runs.retrieve(thread_id=thread.id, run_id=run.id)
