@@ -1,12 +1,12 @@
 from flask import Flask, request, jsonify
 import openai
+import os
 import time
 
 app = Flask(__name__)
 
-# Coloque sua chave secreta aqui
-openai.api_key = "SUA_CHAVE_API_AQUI"
-assistant_id = "ID_DO_SEU_ASSISTENTE_AQUI"
+openai.api_key = os.environ["OPENAI_API_KEY"]
+assistant_id = "asst_CE2zEjsJHGKghvvGLeUORTzh"
 
 @app.route("/", methods=["POST"])
 def perguntar_ao_joao():
