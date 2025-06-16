@@ -29,11 +29,16 @@ def perguntar_ao_joao():
         assistant_id=assistant_id
     )
 
-    # 4. Esperar a resposta ficar pronta
+   # 4. Esperar a resposta ficar pronta com timeout de segurança
+        tempo_maximo = 60  # segundos
+        tempo_inicial = time.time()
+
     while True:
         run_status = openai.beta.threads.runs.retrieve(thread_id=thread.id, run_id=run.id)
         if run_status.status == "completed":
             break
+        if time.time() - tempo_inicial > tempo_maximo:
+            return jsonify({"erro": "Tempo limite atingido aguardando resposta do Assistant."}), 504    
         time.sleep(1)
 
     # 5. Pegar a resposta
