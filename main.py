@@ -9,7 +9,7 @@ openai.api_key = os.environ["OPENAI_API_KEY"]
 assistant_id = "asst_CE2zEjsJHGKghvvGLeUORTzh"
 
 @app.route("/", methods=["POST"])
-def perguntar_ao_joao():
+def perguntar():
     data = request.json
     pergunta = data.get("mensagem", "")
 
